@@ -1,10 +1,19 @@
+let funb = false
+let imgb = false
+
+function preload(){
+  a = loadImage('tux.jpg')
+}
+
 function setup() {
-  createCanvas(1000, 1000);
+  createCanvas(windowWidth, windowHeight + 900);
   noCursor();
+    background(29, 76, 179);
+    textAlign(CENTER)
+
 }
 
 function draw() {
-  background(29, 76, 179);
   let y =  millis();
   text(y, 5, 50);
   fill(12, 89, 16);
@@ -41,16 +50,52 @@ function draw() {
   noFill();
   fill(35, 153, 108);
   text('Dredelel', 300, 250)
-  noFill();
-  fill(17, 240, 214);
-  rect(mouseX, mouseY, 40, 40, 40, 40);
+
     noFill();
   fill(0,0,0);
   square(500, 300, 50)
 
-  let img = createImg(
-    'https://www.gentoo.org/assets/img/logo/gentoo-typo.svg',
-  );
-  img.position(100, 25);
+  k()
 
+  if (funb == true) {
+  fun()
+  }
+
+  if (imgb == true) {
+  textBr()
+  }
+//  let img = createImg(
+  //  'https://www.gentoo.org/assets/img/logo/gentoo-typo.svg',
+//  );
+  //img.position(100, 25);
+
+}
+
+function k(){
+  if (key === 'q') {
+    funb = true
+    imgb = false
+  }
+  if (key === 'w') {
+    funb = false
+    imgb = true
+  }
+}
+
+function fun(){
+if (mouseIsPressed == true) {
+  image(a, mouseX,mouseY)
+ }
+}
+
+function textBr()//text Brushing
+{
+  if (mouseIsPressed == true) {
+    textSize(40)
+    text('I HATE THE ANTICHRIST', mouseX, mouseY)
+  }
+}
+
+function windowResized(){
+  resizeCanvas(windowWidth, windowHeight)
 }
