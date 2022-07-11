@@ -5,9 +5,14 @@ let ySp = 2
 let xSp = 2
 let md //calcs mouse distance frm img
 let sc = 0 //score
+let sdbl
+let stgmbl = true
+let wingmbl = false
+let rot = 0
 
 function preload(){
   a = loadImage('tux.jpg')
+  sdbl = loadSound('Bloop.mp3')
 }
 
 function setup(){
@@ -15,8 +20,21 @@ function setup(){
 xPos = random(windowWidth)
 yPos = random(windowHeight)
 textAlign(CENTER)
+imageMode(CENTER)
 }
+
 function draw(){
+
+if (stgmbl == true) {
+  stgm()
+}
+if(wingmbl == true){
+  wingm()
+}
+
+}
+
+function stgm(){
   background(0,0,0)
   fill(255,0,0)
   textSize(40)
@@ -40,7 +58,25 @@ if (md <= 20) {
   sc++
   xSp = xSp * 1.2
   ySp = ySp * 1.2
+  sdbl.play()
   }
+  if (sc >= 20) {
+    stgmbl = false
+    wingmbl = true
+  }
+}
+
+function wingm(){
+background(0,10,156)
+fill(255,0,0)
+textSize(40)
+text("wan" ,windowWidth/2, 50)
+rot++
+push()
+translate(windowWidth/2, windowHeight/2)
+rotate(radians(rot))
+image(a, 0,0, 100, 100)
+pop()
 }
 
 function windowResized(){

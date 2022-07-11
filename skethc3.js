@@ -16,7 +16,7 @@ function setup(){
 //    image(l, random(windowWidth), random(windowHeight),100,30)
 //}
 
-}
+
 
 function draw(){
   background(255,0,205)
@@ -24,7 +24,7 @@ function draw(){
     line(i,0,i,windowHeight)
     line(0,i,windowWidth,i)
 }
-
+}
 function windowResized(){
   resizeCanvas(windowWidth, windowHeight)
 }
