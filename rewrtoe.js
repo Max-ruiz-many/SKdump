@@ -4,6 +4,7 @@ let s
 let bu
 let c //stores canvas, needed for layering html items
 let f //font
+let i //trying something
 //bool list, needed to load the pages
 let sdbool = false
 let pthbool = false
@@ -35,16 +36,16 @@ function sde(){
 
 function page3(){
   sdbool = false
-   pthbool = true
+  pthbool = true
   removeElements()
   background(254,90,47)
   textFont(f)
   textSize(35)
-  text('The private forum is still up?', windowWidth/2, windowHeight/2)
-  print(millis())
-  if (millis > 20000) {
-  page4()
-  }
+  text('That hubris from the mastermind', windowWidth/2, windowHeight/2)
+for (let i = 0; i < 50; i++) {
+  text('Things have gotten beyond our reach', random(windowWidth), random(windowHeight))
+}
+page4()
 }
 
 function page4(){
