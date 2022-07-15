@@ -32,8 +32,8 @@ function setup(){
   imageMode(CENTER)
   bu = createButton('Login')
   bu.hide()
-  ema = createButton('Next')
-  ema.hide()
+  max = createButton('Next')
+  max.hide()
   ems = createButton('Previous')
   ems.hide()
 }
@@ -80,19 +80,18 @@ function page4(){
   let pgbool = true
   background(128,128,128)
   textSize(12)
-  c.style('z-index', '-2')
+  c.style('z-index', '-1')
   c.position(0,0)
-    ema.show()
-    ema.position(0,0)
-  ema.mousePressed(page5)
   text('\n\nFrom    Prof. Eiri \nDate    30 Jan 1980 0:45:12\nSubject    Pre-check error\nSomeone got the 25 Psy lead and 25 General lead mixed up again, Dave go to the switchboard before we lose all our funding. A major test is coming up and we must run checks tonight. Thank you.', 0, 0)
-
+  max.show()
+  max.position(0,0)
+max.mousePressed(page5)
 }
 
 function page5(){
   let pgbool = false
   let pgf = true
-  background(90,90,90)
+  background(255,255,255)
 }
 function err0() {
   background(255,255,255)
