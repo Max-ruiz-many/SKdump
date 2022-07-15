@@ -2,24 +2,40 @@ let k //vars needed for preload
 let s
 //let bubo = false //button variables
 let bu
+let ema
+let ems
 let c //stores canvas, needed for layering html items
 let f //font
 let i //trying something
 //bool list, needed to load the pages
-let sdbool = false
-let pthbool = false
-let pgbool = false
+let sdbool = false //2 page
+let pthbool = false//third page
+let pgbool = false//foruth
+let pgf = false//fifth
+let pgs = false//sixth
+let pgse = false//seventh
+let pgee = false//eight
+let pgni = false//ninth
+let pgte = false//tenth
+let pgel = false//11
+
+let errbool = false//error page
 function preload(){ //fine
   k = loadImage('Har.png')
   let s = minute()
-  bu = createButton('Login')
-  bu.hide()
+
   f = loadFont('04B_03__.TTF')
 }
 
 function setup(){
   c = createCanvas(windowWidth, windowHeight)
   imageMode(CENTER)
+  bu = createButton('Login')
+  bu.hide()
+  ema = createButton('Next')
+  ema.hide()
+  ems = createButton('Previous')
+  ems.hide()
 }
 
 function sde(){
@@ -31,21 +47,32 @@ function sde(){
   bu.show()
   bu.position(windowWidth/2,windowHeight/2)
   bu.mousePressed(page3)
-
 }
+
+let timeval = 10
 
 function page3(){
   sdbool = false
   pthbool = true
-  removeElements()
+  bu.remove()
+  //removeElements()
   background(254,90,47)
   textFont(f)
   textSize(35)
-  text('That hubris from the mastermind', windowWidth/2, windowHeight/2)
-for (let i = 0; i < 50; i++) {
-  text('Things have gotten beyond our reach', random(windowWidth), random(windowHeight))
+  text('Private Mailing archive, the last evidence of what we did', 0, windowHeight/2)
+  for (let i = 0; i < 51; i++) {
+    text('Things have gotten beyond our reach', random(windowWidth), random(windowHeight))
+  }
+  setInterval(timeIt, 6000)
+  if (timeval == 0) {
+    page4()
+  }
 }
-page4()
+
+function  timeIt()
+{
+  if (timeval > 0)
+  {timeval--}
 }
 
 function page4(){
@@ -53,8 +80,25 @@ function page4(){
   let pgbool = true
   background(128,128,128)
   textSize(12)
-  text('\nFrom    Prof. Eiri Hello\nDate    30 Jan 1980 0:45:12\nSubject    Start Of a New Project\nThe site is broken again, I am thinking that someone (you dave) got one the Psy leads and general leads mixed up in the switch board.\nSeriously though, please fix this Dave. We just missed a test because of this same problem. Shape up before this lab goes under.', 0, 0)
+  c.style('z-index', '-2')
+  c.position(0,0)
+    ema.show()
+    ema.position(0,0)
+  ema.mousePressed(page5)
+  text('\n\nFrom    Prof. Eiri \nDate    30 Jan 1980 0:45:12\nSubject    Pre-check error\nSomeone got the 25 Psy lead and 25 General lead mixed up again, Dave go to the switchboard before we lose all our funding. A major test is coming up and we must run checks tonight. Thank you.', 0, 0)
+
 }
+
+function page5(){
+  let pgbool = false
+  let pgf = true
+  background(90,90,90)
+}
+function err0() {
+  background(255,255,255)
+}
+
+
 
 function draw(){
   background(255,0,205)
@@ -73,14 +117,18 @@ function draw(){
     sde()
   }
   if (pthbool === true) {
-   page3()
+  //removeElements()
+    page3()
   }
   if (pgbool === true) {
     page4()
   }
+  if (pgf === true) {
+    page5()
+  }
 }
 
 function windowResized(){
- resizeCanvas(windowWidth, windowHeight)
- //noLoop() doesnt stop the redrawing, where does this function even point to??
+  resizeCanvas(windowWidth, windowHeight)
+  //noLoop() doesnt stop the redrawing, where does this function even point to??
 }
